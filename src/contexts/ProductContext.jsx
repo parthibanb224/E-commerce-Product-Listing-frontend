@@ -38,7 +38,7 @@ export default function UsersContextProvider({ children }) {
   const [selectedPhoto, setSelectedPhoto] = useState(null);
 
   useEffect(() => {
-    const URL = import.meta.env.VITE_USER_NODE_ENV === 'development' ? `${import.meta.env.VITE_REACT_APP_DEV_URL_FOR_BACKEND}/users/${signinUser}` : `${import.meta.env.VITE_REACT_APP_PRO_URL_FOR_BACKEND}/users/${signinUser}`;
+    const URL = import.meta.env.MODE === 'development' ? `${import.meta.env.VITE_REACT_APP_DEV_URL_FOR_BACKEND}/users/${signinUser}` : `${import.meta.env.VITE_REACT_APP_PRO_URL_FOR_BACKEND}/users/${signinUser}`;
     axios.get(URL)
       .then(res => {
         // console.log(res.data.result);
@@ -51,7 +51,7 @@ export default function UsersContextProvider({ children }) {
 
   // fetch products
   useEffect(() => {
-    const URL = import.meta.env.VITE_USER_NODE_ENV === 'development' ? `${import.meta.env.VITE_REACT_APP_DEV_URL_FOR_BACKEND}/Books/get` : `${import.meta.env.VITE_REACT_APP_PRO_URL_FOR_BACKEND}/Books/get`;
+    const URL = import.meta.env.MODE === 'development' ? `${import.meta.env.VITE_REACT_APP_DEV_URL_FOR_BACKEND}/Books/get` : `${import.meta.env.VITE_REACT_APP_PRO_URL_FOR_BACKEND}/Books/get`;
     axios.get(URL)
       .then(res => {
         setProducts(res.data.result)
@@ -64,7 +64,7 @@ export default function UsersContextProvider({ children }) {
   const navigat = useNavigate();
   const handleSignup = (event) => {
     event.preventDefault();
-    const SIGNUP_URL = import.meta.env.VITE_USER_NODE_ENV === 'development' ? `${import.meta.env.VITE_REACT_APP_DEV_URL_FOR_BACKEND}/signup/createUser` : `${import.meta.env.VITE_REACT_APP_PRO_URL_FOR_BACKEND}/signup/createUser`;
+    const SIGNUP_URL = import.meta.env.MODE === 'development' ? `${import.meta.env.VITE_REACT_APP_DEV_URL_FOR_BACKEND}/signup/createUser` : `${import.meta.env.VITE_REACT_APP_PRO_URL_FOR_BACKEND}/signup/createUser`;
     axios.post(SIGNUP_URL, input)
       .then(res => {
         navigat('/login')
@@ -82,7 +82,7 @@ export default function UsersContextProvider({ children }) {
         'Cache-Control': 'no-store, no-cache, must-revalidate, private',
       },
     };
-    const LOGIN_URL = import.meta.env.VITE_USER_NODE_ENV === 'development' ? `${import.meta.env.VITE_REACT_APP_DEV_URL_FOR_BACKEND}/login` : `${import.meta.env.VITE_REACT_APP_PRO_URL_FOR_BACKEND}/login`;
+    const LOGIN_URL = import.meta.env.MODE === 'development' ? `${import.meta.env.VITE_REACT_APP_DEV_URL_FOR_BACKEND}/login` : `${import.meta.env.VITE_REACT_APP_PRO_URL_FOR_BACKEND}/login`;
     axios.post(LOGIN_URL, input, axiosConfig)
       .then(res => {
         if (res.data.success) {
@@ -113,7 +113,7 @@ export default function UsersContextProvider({ children }) {
     event.preventDefault();
     // toast("Email Sending.....",{autoClose: 2000,pauseOnHover: false});
     setLoaded("true");
-    const FORGOT_URL = import.meta.env.VITE_USER_NODE_ENV === 'development' ? `${import.meta.env.VITE_REACT_APP_DEV_URL_FOR_BACKEND}/forgot` : `${import.meta.env.VITE_REACT_APP_PRO_URL_FOR_BACKEND}/forgot`;
+    const FORGOT_URL = import.meta.env.MODE === 'development' ? `${import.meta.env.VITE_REACT_APP_DEV_URL_FOR_BACKEND}/forgot` : `${import.meta.env.VITE_REACT_APP_PRO_URL_FOR_BACKEND}/forgot`;
     axios.put(FORGOT_URL, input)
       .then(response => {
         if (response.data.success) {
@@ -134,7 +134,7 @@ export default function UsersContextProvider({ children }) {
         'Cache-Control': 'no-store, no-cache, must-revalidate, private',
       },
     };
-    const LOGOUT_URL = import.meta.env.VITE_USER_NODE_ENV === 'development' ? `${import.meta.env.VITE_REACT_APP_DEV_URL_FOR_BACKEND}/login/logout` : `${import.meta.env.VITE_REACT_APP_PRO_URL_FOR_BACKEND}/login/logout`;
+    const LOGOUT_URL = import.meta.env.MODE === 'development' ? `${import.meta.env.VITE_REACT_APP_DEV_URL_FOR_BACKEND}/login/logout` : `${import.meta.env.VITE_REACT_APP_PRO_URL_FOR_BACKEND}/login/logout`;
     await axios.post(LOGOUT_URL, axiosConfigs)
       .then(res => {
         if (res.data === "Logged out successfully") {
@@ -150,7 +150,7 @@ export default function UsersContextProvider({ children }) {
   const handleUpdateUser = (event) => {
     event.preventDefault();
     setUser({ ...user, ...input })
-    const URL = import.meta.env.VITE_USER_NODE_ENV=== 'development' ? `${import.meta.env.VITE_REACT_APP_DEV_URL_FOR_BACKEND}/updateUser/${signinUser}` : `${import.meta.env.VITE_REACT_APP_PRO_URL_FOR_BACKEND}/updateUser/${signinUser}`;
+    const URL = import.meta.env.MODE=== 'development' ? `${import.meta.env.VITE_REACT_APP_DEV_URL_FOR_BACKEND}/updateUser/${signinUser}` : `${import.meta.env.VITE_REACT_APP_PRO_URL_FOR_BACKEND}/updateUser/${signinUser}`;
     axios.patch(URL, input)
       .then(response => {
         if (response.data.success) {
@@ -163,7 +163,7 @@ export default function UsersContextProvider({ children }) {
   }
 
   // useEffect(() => {
-  //   const URL = import.meta.env.VITE_USER_NODE_ENV === 'development' ? `${import.meta.env.VITE_REACT_APP_DEV_URL_FOR_BACKEND}/Books` : `${import.meta.env.VITE_REACT_APP_PRO_URL_FOR_BACKEND}/Books`;
+  //   const URL = import.meta.env.MODE === 'development' ? `${import.meta.env.VITE_REACT_APP_DEV_URL_FOR_BACKEND}/Books` : `${import.meta.env.VITE_REACT_APP_PRO_URL_FOR_BACKEND}/Books`;
   //   axios.post(URL)
   //     .then(res => {
   //       console.log("Successsssss??")

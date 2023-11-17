@@ -16,7 +16,7 @@ export default function ResetPassword() {
     const handleResetPassword = (event) => {
         event.preventDefault();
         if (passwordCheck.newPassword === passwordCheck.confirmPassword) {
-            const RESET_URL = import.meta.env.VITE_USER_NODE_ENV === 'development' ? `${import.meta.env.VITE_REACT_APP_DEV_URL_FOR_BACKEND}/reset/${token}` : `${import.meta.env.VITE_REACT_APP_PRO_URL_FOR_BACKEND}/reset/${token}`;
+            const RESET_URL = import.meta.env.MODE === 'development' ? `${import.meta.env.VITE_REACT_APP_DEV_URL_FOR_BACKEND}/reset/${token}` : `${import.meta.env.VITE_REACT_APP_PRO_URL_FOR_BACKEND}/reset/${token}`;
             axios.patch(RESET_URL, { password: passwordCheck.newPassword })
                 .then(response => {
                     if (response.data.success) {
