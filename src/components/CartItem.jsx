@@ -10,7 +10,7 @@ const CartItem = ({ item }) => {
     <div className="flex gap-4 py-4 lg:px-6 border-b border-gray-300">
       <div className="w-full min-h-[150px] flex items-center gap-4">
         <Link to={`/product/${item._id}`}>
-          <img className="max-w-[80px] rounded-md" src={item.thumbnailUrl} alt="" />
+          <img className="max-w-[80px] rounded-md" src={item.image} alt="" />
         </Link>
         <div className="w-full flex flex-col">
           <div className="flex justify-between mb-2">
@@ -46,10 +46,10 @@ const CartItem = ({ item }) => {
               </div>
             </div>
             <div className="flex flex-1 justify-center items-center text-lg">
-              $ {item.pageCount}
+              ₹ {item.price}
             </div>
             <div className="flex flex-1 justify-end items-center text-primary font-medium">
-              $ {(item.pageCount * item.amount).toFixed(2)}
+              ₹ {(item.price * item.amount).toFixed(2)}
             </div>
           </div>
         </div>

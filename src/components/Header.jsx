@@ -2,8 +2,8 @@ import React, { useEffect, useRef, useState } from "react";
 import { useCart } from "../contexts/CartContext";
 import { Link } from "react-router-dom";
 import { BsBag } from "react-icons/bs";
-import logo from '../Assets/Logo.svg'
-import { FaUser, FaCog, FaSignOutAlt, FaShoppingCart } from "react-icons/fa";
+import logo from '../Assets/icons8-shopaholic-94.png'
+import { FaUser, FaCog, FaSignOutAlt, FaShoppingCart, FaSearch } from "react-icons/fa";
 import { useUser } from "../contexts/ProductContext";
 
 const Header = () => {
@@ -12,6 +12,18 @@ const Header = () => {
   const { signinUser, handleLogout, isLoggedin, selectedPhoto } = useUser();
   const [isProfileOpen, setIsProfileOpen] = useState(false);
   const dropdownRef = useRef(null);
+  const [searchInput, setSearchInput] = useState("");
+
+  const handleSearchInputChange = (event) => {
+    setSearchInput(event.target.value);
+    // You can perform additional actions as needed, e.g., filtering products based on the search input.
+  };
+
+  const handleSearchSubmit = (event) => {
+    event.preventDefault();
+    // You can perform actions when the user submits the search form.
+    // For example, redirecting to a search results page.
+  };
 
   const toggleDropdown = () => {
     setIsProfileOpen(!isProfileOpen);
@@ -58,6 +70,19 @@ const Header = () => {
             <img src={logo} alt="logo" />
           </div>
         </Link>
+
+         <form onSubmit={handleSearchSubmit} className="flex items-center">
+          <input
+            type="text"
+            placeholder="Search..."
+            value={searchInput}
+            onChange={handleSearchInputChange}
+            className="border border-gray-300 rounded-xl p-1 mr-2"
+          />
+          <button type="submit" className="text-gray-500">
+            <FaSearch />
+          </button>
+        </form>
 
         <div
           onClick={() => setIsOpen(!isOpen)}

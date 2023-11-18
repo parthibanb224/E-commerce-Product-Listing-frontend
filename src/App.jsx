@@ -12,6 +12,7 @@ import Forgot from "./pages/Forgot";
 import MyAccount from "./pages/MyAccount";
 import './App.css'
 import OrdersPage from "./pages/OrdersPage";
+import SpecificProducts from "./pages/SpecificProducts";
 
 function App() {
 
@@ -28,6 +29,7 @@ function App() {
           <Route path="/forgot" Component={Forgot}></Route>
           <Route path="/settings" Component={MyAccount}></Route>
           <Route path="/orders" Component={OrdersPage}></Route>
+          <Route path="/category/:id" Component={SpecificProducts}></Route>
         </Routes>
         <Sidebar />
         <Footer />

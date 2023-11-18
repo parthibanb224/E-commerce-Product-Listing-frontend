@@ -62,7 +62,7 @@ const Sidebar = () => {
         <div className="flex w-full justify-between items-center border-t border-gray-300 pt-4">
           {/* Total */}
           <div className="font-semibold text-lg text-gray-700">
-            <span className="mr-2">Subtotal:</span> $ {total.toFixed(2)}
+            <span className="mr-2">Subtotal:</span> ₹ {total.toFixed(2)}
           </div>
           {/* Clear cart icon */}
           <div

@@ -22,7 +22,7 @@ export default function CartContextProvider({ children }) {
 
   useEffect(() => {
     const total = cart.reduce((accumulator, currentItem) => {
-      return accumulator + currentItem.pageCount * currentItem.amount;
+      return accumulator + currentItem.price * currentItem.amount;
     }, 0);
     setTotal(total);
   });
