@@ -92,6 +92,8 @@ export default function Login() {
               </div>
 
               {/* <!-- Email input --> */}
+              <h6 className='font-thin text-center text-red-300'>Authentication Enabled (or)</h6>
+              <h6 className='font-thin mb-2 text-center text-red-300'>Email:test01@gmail.com, Password:1234</h6>
               <TEInput
                 type="email"
                 label="Email address"
